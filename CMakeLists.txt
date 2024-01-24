@@ -1,0 +1,10 @@
+project(lws-minimal-ws-client-binance C)
+cmake_minimum_required(VERSION 3.5)
+add_definitions("-Wall -g")
+set(SERVERO server)
+set(SERVER server.c)
+set(CLIENTO client)
+set(CLIENT client.c)
+add_executable(${SERVERO} ${SERVER})
+add_executable(${CLIENTO} ${CLIENT})
+
