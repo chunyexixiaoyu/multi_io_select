@@ -35,11 +35,10 @@ int main(void)
     struct sockaddr_in client_addr; //客户端的地址信息
     socklen_t sin_size;
     int yes = 1;
+    char tmp[] = "hello client\n";
     char buf[BUF_SIZE];
     int ret;
     int i;
-    int len = 0;
-    double tmplatency = 0;
   //建立sock_fd套接字
     if((sock_fd = socket(AF_INET,SOCK_STREAM,0))==-1)
     {
@@ -129,6 +128,7 @@ int main(void)
                     {
                         memset(&buf[ret],'\0',1);
                         printf("client[%d] send:%s\n",i,buf);
+                        write(fd[i],tmp,sizeof(tmp));
                         
                     }
                 }
@@ -171,7 +171,7 @@ int main(void)
                 continue;
             }
         }
-        //showclient();
+        showclient();
     }
  
     for(i=0;i<MAXCLINE;i++)
